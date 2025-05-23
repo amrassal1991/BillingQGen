@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Telecom Billing Question Bank",
+  "type": "object",
+  "properties": {
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id","type","difficulty","prompt","parameters","explanation"],
+        "properties": {
+          "id": {"type":"string"},
+          "type": {"type":"string","enum":["proration","ledger","timeline","reversal"]},
+          "difficulty": {"type":"string","enum":["moderate","hard","brutal"]},
+          "prompt": {"type":"string"},
+          "parameters": {"type":"object"},
+          "explanation": {"type":"string"}
+        }
+      }
+    }
+  },
+  "required":["questions"]
+}
