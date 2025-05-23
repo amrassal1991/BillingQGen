@@ -1,0 +1,90 @@
+﻿Statement of Work: U.S. Telecommunications Billing Exam System Development
+1. Project Overview & Objective
+This Statement of Work (SOW) outlines the requirements for the design, development, and delivery of a custom exam system ("the System"). The System is intended for [Your Training Institute Name] ("the Client") to assess the billing knowledge of trainees in a U.S. telecommunications call center context.
+The primary objective is to secure a robust, maintainable, and cost-effective System that:
+* Accurately tests core and complex U.S. telecommunications billing concepts.
+* Employs high variance and weighted difficulty to ensure rigorous testing and achieve an approximate 40% pass rate.
+* Maximizes trainee learning outcomes through detailed, automated feedback.
+* Is delivered with clear documentation, enabling future in-house management or cost-effective third-party maintenance.
+* Provides the highest possible value by adhering strictly to these specifications and avoiding unnecessary complexity or vendor-specific dependencies.
+2. Scope of Work
+2.1. In-Scope:
+* Development of three core Python scripts: exam_generator.py and scorer.py.
+* Definition and delivery of a JSON schema and an initial, representative example set for question_bank.json.
+* Delivery of comprehensive technical documentation.
+* Delivery of all source code.
+* Demonstration of the fully functional System according to the Acceptance Criteria.
+2.2. Out-of-Scope:
+* Development of a graphical user interface (GUI) or web front-end for exam delivery (unless specified as an optional, separately priced item). The System will operate via command-line execution or provide clear API/file interfaces for integration.
+* Hosting, deployment, or integration with existing Client systems (unless specified as an optional, separately priced item).
+* Population of the question_bank.json beyond the agreed-upon initial example set.
+* Ongoing technical support beyond an agreed-upon warranty period (see Section 11).
+* Localization or adaptation for non-U.S. billing concepts.
+3. Detailed Technical Requirements & Specifications
+The Vendor shall deliver a System meeting the specifications outlined in the "Redesigned Prompt: Comprehensive Billing Exam System" document (attached as Appendix A), with the following emphases and clarifications:
+3.1. question_bank.json:
+* Schema Definition: The Vendor must deliver a formal, clearly documented JSON schema. This schema must be robust enough to handle all specified concepts and edge cases and designed for easy understanding and modification by non-programmers (for content addition).
+* Explanation Framework: The explanation_framework must support structured explanations, enabling the scorer.py to generate consistently detailed and helpful feedback.
+* Example Set: The Vendor will provide 15 diverse example question templates (5 Moderate, 5 Hard, 5 Brutal), fully compliant with the schema, demonstrating parameterization, edge cases, and explanation frameworks. These examples will be used for Acceptance Testing.
+3.2. exam_generator.py:
+* Configurability: Key parameters must be configurable without code changes, preferably via a separate configuration file or command-line arguments. This includes:
+   * Number of questions per exam.
+   * Difficulty distribution percentages (e.g., 20/40/40).
+   * Path to the question_bank.json.
+* Randomization: Must ensure true randomization (within constraints) for both question selection and data parameterization to minimize predictability.
+* Error Handling: Must include robust error handling (e.g., handling a missing/malformed question bank, insufficient questions for the requested mix).
+* Output: Must produce a clean, well-structured JSON output containing the full exam instance (questions asked, with their generated data, and user answers) for the scorer.
+3.3. scorer.py:
+* Feedback Engine: The core focus must be on generating clear, detailed, and educational feedback as per Appendix A. It must utilize the explanation_framework effectively.
+* Report Format: The output report must be generated in a human-readable format (e.g., plain text or Markdown) and, optionally, a structured format (e.g., JSON) for potential future integration. The report must clearly show the question, user answer, correct answer, score, and detailed rationale for each question.
+* Accuracy: Must perform calculations and evaluations with 100% accuracy based on the provided answer keys.
+3.4. General Technical Standards:
+* Language: Python 3.8+
+* Dependencies: Minimize external dependencies. Any required libraries must be open-source, well-maintained, and clearly listed with their licenses.
+* Code Quality: Code must be well-commented, adhere to PEP 8 standards, and be structured logically for maintainability.
+4. Deliverables
+The Vendor shall deliver the following:
+1. Source Code: All Python scripts (exam_generator.py, scorer.py) and any supporting modules.
+2. JSON Schema: The documented schema for question_bank.json.
+3. Example Question Bank: The question_bank.json file containing the 15 agreed-upon example questions.
+4. Configuration File(s): Example and template configuration files.
+5. Technical Documentation: (See Section 9).
+6. Setup & Execution Guide: Simple instructions on how to set up the environment (if any) and run the scripts.
+5. Acceptance Criteria (How Value Will Be Assessed)
+The Client will accept the deliverables only upon successful completion of the following:
+1. Code Review: Successful review of the source code for clarity, adherence to standards, and comments.
+2. Documentation Review: Confirmation that documentation is complete, clear, and accurate.
+3. Schema Validation: Confirmation that the question_bank.json examples validate against the provided schema and that the schema supports all required features.
+4. Functional Demonstration: The Vendor must conduct a live (or recorded) demonstration showcasing:
+   * Successful generation of three distinct exams using exam_generator.py with different configurations.
+   * Execution of these exams (simulating trainee input).
+   * Successful processing of these exams by scorer.py.
+   * Review of the generated reports, verifying accuracy, feedback detail, and adherence to requirements (including handling both correct and incorrect answers, and edge cases).
+5. Edge Case Testing: Specific demonstration that the System correctly handles at least three distinct edge cases defined in Appendix A.
+6. Configurability Test: Demonstration that changing parameters (e.g., pass rate mix) in the configuration file works as expected without code changes.
+6. Project Assumptions
+* The Client will provide timely feedback (within 3 business days) during any review cycles.
+* The core U.S. telecommunications billing concepts listed in Appendix A are stable for the duration of the project.
+* The System will be run in a standard server/PC environment capable of executing Python 3.8+.
+7. Client Responsibilities
+* Provide Appendix A and any necessary clarifications on billing concepts.
+* Designate a single point of contact for project communications.
+* Perform timely reviews and provide acceptance upon meeting criteria.
+8. Vendor Responsibilities
+* Develop and deliver the System according to this SOW.
+* Provide regular (e.g., weekly) progress updates.
+* Facilitate the Acceptance Testing demonstration.
+* Ensure all delivered code is original or properly licensed.
+9. Documentation Requirements
+Technical documentation must be sufficient for a competent Python developer (unfamiliar with the project) to understand, maintain, and extend the System. It must include:
+* An overview of the System architecture.
+* Detailed documentation of the question_bank.json schema.
+* Explanation of the exam_generator.py logic, configuration options, and output format.
+* Explanation of the scorer.py logic, feedback engine, and report format.
+* A guide to setting up and running the System.
+* Inline code comments for complex sections.
+10. Intellectual Property
+Upon final payment, [Your Training Institute Name] shall own all rights, titles, and interests in and to all deliverables, including all source code and documentation. The Vendor may retain rights only to pre-existing, non-project-specific tools or libraries used.
+11. Warranty (Optional - To Be Negotiated)
+The Vendor shall provide a [e.g., 30-day] warranty period following final acceptance. During this period, the Vendor will rectify, at no additional cost, any bugs or defects (defined as deviations from the agreed-upon requirements in this SOW) discovered. This warranty does not cover new features or changes to requirements.
+(Note: Appendix A would be the "Redesigned Prompt: Comprehensive Billing Exam System" document previously discussed.)
