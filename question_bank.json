@@ -1,23 +1,101 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Telecom Billing Question Bank",
-  "type": "object",
-  "properties": {
-    "questions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id","type","difficulty","prompt","parameters","explanation"],
-        "properties": {
-          "id": {"type":"string"},
-          "type": {"type":"string","enum":["proration","ledger","timeline","reversal"]},
-          "difficulty": {"type":"string","enum":["moderate","hard","brutal"]},
-          "prompt": {"type":"string"},
-          "parameters": {"type":"object"},
-          "explanation": {"type":"string"}
-        }
-      }
+  "questions": [
+    {
+      "id": "ledger-1",
+      "type": "ledger",
+      "difficulty": "moderate",
+      "prompt": "A customer has a previous balance of ${prev_balance}, made a payment of ${payment_made}, and incurred new charges of ${new_charges}. Calculate the current balance.",
+      "parameters": {},
+      "explanation": "To calculate the current balance: Previous Balance - Payment Made + New Charges"
+    },
+    {
+      "id": "ledger-2",
+      "type": "ledger",
+      "difficulty": "hard",
+      "prompt": "A customer with a previous balance of ${prev_balance} made a payment of ${payment_made} on the 15th of the month. They also had new charges of ${new_charges} applied on the 20th. Calculate the final balance.",
+      "parameters": {},
+      "explanation": "To calculate the final balance: Previous Balance - Payment Made + New Charges"
+    },
+    {
+      "id": "ledger-3",
+      "type": "ledger",
+      "difficulty": "brutal",
+      "prompt": "A customer with a previous balance of ${prev_balance} made a payment of ${payment_made} and had a late fee of $15 applied. They also incurred new charges of ${new_charges}. Calculate the final balance.",
+      "parameters": {},
+      "explanation": "To calculate the final balance: Previous Balance - Payment Made + Late Fee + New Charges"
+    },
+    {
+      "id": "proration-1",
+      "type": "proration",
+      "difficulty": "moderate",
+      "prompt": "A customer started service on ${start_date} with a monthly rate of ${monthly_rate}. Calculate the prorated charge for the first month.",
+      "parameters": {},
+      "explanation": "To calculate prorated charges: (Days of service in month / Total days in month) × Monthly Rate"
+    },
+    {
+      "id": "proration-2",
+      "type": "proration",
+      "difficulty": "hard",
+      "prompt": "A customer started a service with a monthly rate of ${monthly_rate} on ${start_date}. Calculate the prorated charge for the first partial month of service.",
+      "parameters": {},
+      "explanation": "To calculate prorated charges: (Days of service in month / Total days in month) × Monthly Rate"
+    },
+    {
+      "id": "proration-3",
+      "type": "proration",
+      "difficulty": "brutal",
+      "prompt": "A customer started a premium service with a monthly rate of ${monthly_rate} on ${start_date} and received a 10% discount for the first month. Calculate the prorated and discounted charge.",
+      "parameters": {},
+      "explanation": "First calculate the prorated amount: (Days of service / Total days in month) × Monthly Rate, then apply the 10% discount"
+    },
+    {
+      "id": "timeline-1",
+      "type": "timeline",
+      "difficulty": "moderate",
+      "prompt": "A customer canceled service on ${cancel_date} and reactivated on ${reactivate_date}. If the monthly rate is ${monthly_rate}, calculate the credit for the days of no service.",
+      "parameters": {},
+      "explanation": "Calculate the days between cancellation and reactivation, then: (Days of no service / Total days in month) × Monthly Rate"
+    },
+    {
+      "id": "timeline-2",
+      "type": "timeline",
+      "difficulty": "hard",
+      "prompt": "A customer suspended service on ${cancel_date} and resumed on ${reactivate_date}. During suspension, a maintenance fee of $5 applies. If the monthly rate is ${monthly_rate}, calculate the net credit.",
+      "parameters": {},
+      "explanation": "Calculate the credit for days of no service, then subtract the maintenance fee"
+    },
+    {
+      "id": "timeline-3",
+      "type": "timeline",
+      "difficulty": "brutal",
+      "prompt": "A customer downgraded from a premium plan (${monthly_rate}/month) to a basic plan ($30/month) on the 15th of a 30-day month. Calculate the credit for the downgrade.",
+      "parameters": {},
+      "explanation": "Calculate the difference in rates, then prorate for the remaining days: (Premium - Basic) × (Remaining days / Total days)"
+    },
+    {
+      "id": "reversal-1",
+      "type": "reversal",
+      "difficulty": "moderate",
+      "prompt": "A customer was incorrectly charged ${reversal_amount} on ${reversal_date}. Calculate the credit amount including 5% interest.",
+      "parameters": {},
+      "explanation": "Calculate the interest on the incorrect charge: Original Amount + (Original Amount × 5%)"
+    },
+    {
+      "id": "reversal-2",
+      "type": "reversal",
+      "difficulty": "hard",
+      "prompt": "A customer was incorrectly charged ${reversal_amount} for 15 days. If the daily interest rate is 0.1%, calculate the total refund amount.",
+      "parameters": {},
+      "explanation": "Calculate the interest for each day and add to the original amount: Original Amount + (Original Amount × 0.1% × 15)"
+    },
+    {
+      "id": "reversal-3",
+      "type": "reversal",
+      "difficulty": "brutal",
+      "prompt": "A customer was incorrectly charged ${reversal_amount} on ${reversal_date}. The company policy is to refund double the incorrect amount plus $20 for inconvenience. Calculate the total refund.",
+      "parameters": {},
+      "explanation": "Apply the company policy: (Original Amount × 2) + $20"
     }
-  },
-  "required":["questions"]
+  ]
 }
+
