@@ -9,8 +9,8 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-    // Use wildcards for allowedHosts instead of disabling host checking entirely
-    allowedHosts: ['.spock.replit.dev', 'localhost', '127.0.0.1'],
+    // Disable host checking entirely as requested
+    allowedHosts: 'all',
     cors: true,
     hmr: {
       clientPort: 443 // Use 443 for HTTPS connections
@@ -20,7 +20,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     strictPort: true,
-    allowedHosts: ['.spock.replit.dev', 'localhost', '127.0.0.1'],
+    allowedHosts: 'all',
     cors: true
   }
 })
