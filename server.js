@@ -9,8 +9,16 @@ const fs = require('fs');
 const app = express();
 const PORT = parseInt(process.env.PORT) || 8000;
 
+// CORS configuration for Replit
+const corsOptions = {
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+};
+
 // Middleware setup
-app.use(cors()); // Enable CORS for all routes
+app.use(cors(corsOptions)); // Enable CORS with specific options
 app.use(bodyParser.json()); // Parse JSON request bodies
 app.use(express.static(path.join(__dirname, 'frontend/dist'))); // Serve static files
 
@@ -223,4 +231,3 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`- POST http://0.0.0.0:${PORT}/validate_answer`);
   console.log(`- POST http://0.0.0.0:${PORT}/score_exam`);
 });
-
