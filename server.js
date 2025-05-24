@@ -9,9 +9,9 @@ const fs = require('fs');
 const app = express();
 const PORT = parseInt(process.env.PORT) || 8000;
 
-// CORS configuration for Replit
+// CORS configuration for Replit and GitHub Pages
 const corsOptions = {
-  origin: '*', // Allow all origins
+  origin: ['https://billingqgen.amrassal1991.repl.co', 'https://amrassal1991.github.io', '*'], // Allow Replit, GitHub Pages, and all origins during development
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
